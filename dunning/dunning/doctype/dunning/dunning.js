@@ -2,12 +2,32 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Dunning', {
+	setup: function (frm) {
+		frm.set_query('sales_invoice', () => {
+			return {
+				"filters": {
+					"docstatus": 1,
+					"company": frm.doc.company,
+					"outstanding_amount": [">", 0]
+				},
+			};
+		});
+	},
 	refresh: function (frm) {
+		frm.set_df_property("company", "read_only", frm.doc.__islocal ? 0 : 1);
+		frm.toggle_display("naming_series",false)
 		if (frm.is_new()) {
 			frm.trigger("calculate_overdue_days");
 			frm.set_value("posting_date", frappe.datetime.nowdate());
 		}
 	},
+  	company: function(frm) {
+		if (frm.doc.company == 'SC ESO Electronic S.R.L') {
+			frm.set_value('naming_series', 'PR-RO-.YY.-.#####')
+			} else {
+				frm.set_value('naming_series', 'PR-DE-.YY.-.#####')
+			}
+  	},
 	due_date: function (frm) {
 		frm.trigger("calculate_overdue_days");
 	},
