@@ -15,7 +15,7 @@ frappe.ui.form.on('Dunning', {
 	},
 	refresh: function (frm) {
 		frm.set_df_property("company", "read_only", frm.doc.__islocal ? 0 : 1);
-		frm.toggle_display("naming_series",false)
+		frm.toggle_display("naming_series", false);
 		if (frm.is_new()) {
 			frm.trigger("calculate_overdue_days");
 			frm.set_value("posting_date", frappe.datetime.nowdate());
@@ -23,10 +23,11 @@ frappe.ui.form.on('Dunning', {
 	},
   	company: function(frm) {
 		if (frm.doc.company == 'SC ESO Electronic S.R.L') {
-			frm.set_value('naming_series', 'PR-RO-.YY.-.#####')
-			} else {
-				frm.set_value('naming_series', 'PR-DE-.YY.-.#####')
-			}
+			frm.set_value('naming_series', 'PR-RO-.YY.-.#####');
+		}
+		else {
+			frm.set_value('naming_series', 'PR-DE-.YY.-.#####');
+		}
   	},
 	due_date: function (frm) {
 		frm.trigger("calculate_overdue_days");
