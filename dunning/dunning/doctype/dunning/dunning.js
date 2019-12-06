@@ -45,7 +45,14 @@ frappe.ui.form.on('Dunning', {
 				  doc: frm.doc
 		      },
 		      callback: function(r) {
-				  frm.set_value("text_block", r.message);
+				  if (r.message) {
+					  frm.set_value("top_text_block", r.message.top_text_block);
+					  frm.set_value("bottom_text_block", r.message.bottom_text_block);
+				  }
+				  else {
+					  frm.set_value("top_text_block", '');
+					  frm.set_value("bottom_text_block", '');
+				  }
 		      }
 		    });
 		}

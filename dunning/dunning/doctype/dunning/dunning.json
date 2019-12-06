@@ -24,11 +24,12 @@
   "column_break_17",
   "resolution_status",
   "printing_setting_section",
-  "letter_head",
-  "text_block",
-  "column_break_22",
   "language",
+  "top_text_block",
+  "letter_head",
+  "column_break_22",
   "currency",
+  "bottom_text_block",
   "amended_from"
  ],
  "fields": [
@@ -181,20 +182,25 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "text_block",
-   "fieldtype": "Text Editor",
-   "label": "Text Block"
-  },
-  {
    "default": "en",
    "fieldname": "language",
    "fieldtype": "Link",
    "label": "Print Language",
    "options": "Language"
+  },
+  {
+   "fieldname": "top_text_block",
+   "fieldtype": "Text Editor",
+   "label": "Top Text Block"
+  },
+  {
+   "fieldname": "bottom_text_block",
+   "fieldtype": "Text Editor",
+   "label": "Bottom Text Block"
   }
  ],
  "is_submittable": 1,
- "modified": "2019-12-06 11:02:51.535519",
+ "modified": "2019-12-06 12:12:35.290473",
  "modified_by": "Administrator",
  "module": "Dunning",
  "name": "Dunning",
