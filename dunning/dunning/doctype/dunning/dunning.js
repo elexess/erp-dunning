@@ -30,16 +30,25 @@ frappe.ui.form.on('Dunning', {
 		}
   	},
 	dunning_type: function(frm) {
-	    frappe.call({
-	      method: "dunning.dunning.doctype.dunning.dunning.get_text_block",
-	      args: {
-			  dunning_type: frm.doc.dunning_type,
-			  doc: frm.doc
-	      },
-	      callback: function(r) {
-			  frm.set_value("text_block", r.message);
-	      }
-	    });
+	    frm.trigger("get_text_block");
+	},
+	language: function(frm) {
+		frm.trigger("get_text_block");
+	},
+	get_text_block: function (frm) {
+		if(frm.doc.dunning_type && frm.doc.language) {
+		    frappe.call({
+		      method: "dunning.dunning.doctype.dunning.dunning.get_text_block",
+		      args: {
+				  dunning_type: frm.doc.dunning_type,
+				  language: frm.doc.language,
+				  doc: frm.doc
+		      },
+		      callback: function(r) {
+				  frm.set_value("text_block", r.message);
+		      }
+		    });
+		}
 	},
 	due_date: function (frm) {
 		frm.trigger("calculate_overdue_days");
