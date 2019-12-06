@@ -29,6 +29,18 @@ frappe.ui.form.on('Dunning', {
 			frm.set_value('naming_series', 'PR-DE-.YY.-.#####');
 		}
   	},
+	dunning_type: function(frm) {
+	    frappe.call({
+	      method: "dunning.dunning.doctype.dunning.dunning.get_text_block",
+	      args: {
+			  dunning_type: frm.doc.dunning_type,
+			  doc: frm.doc
+	      },
+	      callback: function(r) {
+			  frm.set_value("text_block", r.message);
+	      }
+	    });
+	},
 	due_date: function (frm) {
 		frm.trigger("calculate_overdue_days");
 	},
@@ -47,12 +59,17 @@ frappe.ui.form.on('Dunning', {
 	dunning_fee: function (frm) {
 		frm.trigger("calculate_sum");
 	},
+	sales_invoice: function (frm) {
+		frm.trigger("calculate_overdue_days");
+	},
 	calculate_overdue_days: function (frm) {
-		const posting_date = frm.get_field("posting_date").get_value();
-		const due_date = frm.get_field("due_date").get_value();
+		if (frm.doc.posting_date && frm.doc.due_date) {
+			const posting_date = frm.get_field("posting_date").get_value();
+			const due_date = frm.get_field("due_date").get_value();
 
-		const overdue_days = moment(posting_date).diff(due_date, "days");
-		frm.set_value("overdue_days", overdue_days);
+			const overdue_days = moment(posting_date).diff(due_date, "days");
+			frm.set_value("overdue_days", overdue_days);
+		}
 	},
 	calculate_sum: function (frm) {
 		const outstanding_amount = frm.get_field("outstanding_amount").get_value() || 0;

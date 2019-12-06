@@ -25,6 +25,7 @@
   "resolution_status",
   "printing_setting_section",
   "letter_head",
+  "text_block",
   "column_break_22",
   "currency",
   "amended_from"
@@ -86,6 +87,7 @@
   {
    "default": "0",
    "fetch_from": "dunning_type.interest_rate",
+   "fetch_if_empty": 1,
    "fieldname": "interest_rate",
    "fieldtype": "Float",
    "label": "Interest Rate"
@@ -93,6 +95,7 @@
   {
    "default": "0",
    "fetch_from": "dunning_type.dunning_fee",
+   "fetch_if_empty": 1,
    "fieldname": "dunning_fee",
    "fieldtype": "Currency",
    "label": "Dunning Fee",
@@ -134,6 +137,7 @@
    "options": "Dunning Type"
   },
   {
+   "allow_on_submit": 1,
    "default": "Unresolved",
    "fieldname": "resolution_status",
    "fieldtype": "Select",
@@ -174,10 +178,15 @@
   {
    "fieldname": "column_break_17",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "text_block",
+   "fieldtype": "Text Editor",
+   "label": "Text Block"
   }
  ],
  "is_submittable": 1,
- "modified": "2019-12-06 02:41:50.827771",
+ "modified": "2019-12-06 07:35:06.819454",
  "modified_by": "Administrator",
  "module": "Dunning",
  "name": "Dunning",
