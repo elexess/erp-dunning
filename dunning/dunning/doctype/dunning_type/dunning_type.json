@@ -7,7 +7,9 @@
  "field_order": [
   "dunning_type",
   "dunning_fee",
-  "interest_rate"
+  "interest_rate",
+  "text_block_section",
+  "dunning_type_text_block"
  ],
  "fields": [
   {
@@ -31,9 +33,21 @@
    "label": "Dunning Type",
    "reqd": 1,
    "unique": 1
+  },
+  {
+   "description": "This text block will appear on every Dunning Document",
+   "fieldname": "text_block_section",
+   "fieldtype": "Section Break",
+   "label": "Text Block"
+  },
+  {
+   "fieldname": "dunning_type_text_block",
+   "fieldtype": "Table",
+   "label": "Dunning Type Text Block",
+   "options": "Dunning Type Text Block"
   }
  ],
- "modified": "2019-12-05 06:14:39.605105",
+ "modified": "2019-12-06 05:08:15.332970",
  "modified_by": "Administrator",
  "module": "Dunning",
  "name": "Dunning Type",

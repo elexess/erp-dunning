@@ -1,0 +1,35 @@
+{
+ "creation": "2019-12-06 04:25:40.215625",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "language",
+  "text_block"
+ ],
+ "fields": [
+  {
+   "fieldname": "language",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Language",
+   "options": "Language"
+  },
+  {
+   "fieldname": "text_block",
+   "fieldtype": "Text Editor",
+   "in_list_view": 1,
+   "label": "Text Block"
+  }
+ ],
+ "istable": 1,
+ "modified": "2019-12-06 05:40:57.170027",
+ "modified_by": "Administrator",
+ "module": "Dunning",
+ "name": "Dunning Type Text Block",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
