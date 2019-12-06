@@ -19,7 +19,12 @@ def get_text_block(dunning_type, language, doc):
 	if isinstance(doc, string_types):
 		doc = json.loads(doc)
 
-	text_block = frappe.db.get_value('Dunning Type Text Block', {'parent': dunning_type, 'language': language}, 'text_block')
+	text_block = frappe.db.get_value('Dunning Type Text Block', 
+			{'parent': dunning_type, 'language': language}, 
+			['top_text_block', 'bottom_text_block'], as_dict = 1)
 
 	if text_block:
-		return frappe.render_template(text_block, doc)
+		return {
+			'top_text_block': frappe.render_template(text_block.top_text_block, doc),
+			'bottom_text_block': frappe.render_template(text_block.bottom_text_block, doc)
+		}
