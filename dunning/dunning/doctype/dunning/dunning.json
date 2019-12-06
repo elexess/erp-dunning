@@ -27,6 +27,7 @@
   "letter_head",
   "text_block",
   "column_break_22",
+  "language",
   "currency",
   "amended_from"
  ],
@@ -183,10 +184,17 @@
    "fieldname": "text_block",
    "fieldtype": "Text Editor",
    "label": "Text Block"
+  },
+  {
+   "default": "en",
+   "fieldname": "language",
+   "fieldtype": "Link",
+   "label": "Print Language",
+   "options": "Language"
   }
  ],
  "is_submittable": 1,
- "modified": "2019-12-06 07:35:06.819454",
+ "modified": "2019-12-06 11:02:51.535519",
  "modified_by": "Administrator",
  "module": "Dunning",
  "name": "Dunning",
