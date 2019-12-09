@@ -8,7 +8,8 @@ frappe.ui.form.on('Dunning', {
 				"filters": {
 					"docstatus": 1,
 					"company": frm.doc.company,
-					"outstanding_amount": [">", 0]
+					"outstanding_amount": [">", 0],
+					"status": "Overdue"
 				},
 			};
 		});

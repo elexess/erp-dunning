@@ -8,6 +8,7 @@
   "company",
   "naming_series",
   "sales_invoice",
+  "customer_name",
   "outstanding_amount",
   "column_break_3",
   "posting_date",
@@ -111,7 +112,6 @@
    "default": "0",
    "fieldname": "sum",
    "fieldtype": "Currency",
-   "in_list_view": 1,
    "label": "Sum",
    "precision": "2",
    "read_only": 1
@@ -135,6 +135,7 @@
   {
    "fieldname": "dunning_type",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Dunning Type",
    "options": "Dunning Type"
   },
@@ -197,10 +198,18 @@
    "fieldname": "bottom_text_block",
    "fieldtype": "Text Editor",
    "label": "Bottom Text Block"
+  },
+  {
+   "fetch_from": "sales_invoice.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer Name",
+   "read_only": 1
   }
  ],
  "is_submittable": 1,
- "modified": "2019-12-06 12:12:35.290473",
+ "modified": "2019-12-09 15:12:13.296047",
  "modified_by": "Administrator",
  "module": "Dunning",
  "name": "Dunning",
@@ -250,5 +259,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "ASC",
+ "title_field": "customer_name",
  "track_changes": 1
 }
