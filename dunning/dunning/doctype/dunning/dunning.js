@@ -94,7 +94,7 @@ frappe.ui.form.on('Dunning', {
 		const dunning_fee = frm.get_field("dunning_fee").get_value() || 0;
 
 		const sum = outstanding_amount + interest_amount + dunning_fee;
-		frm.set_value("sum", sum);
+		frm.set_value("sum", flt(sum, precision('sum')));
 	},
 	calculate_interest: function (frm) {
 		const interest_rate = frm.get_field("interest_rate").get_value() || 0;
@@ -103,6 +103,6 @@ frappe.ui.form.on('Dunning', {
 
 		const interest_per_year = outstanding_amount * interest_rate / 100;
 		const interest_amount = interest_per_year / 360 * overdue_days;
-		frm.set_value("interest_amount", interest_amount);
+		frm.set_value("interest_amount", flt(interest_amount, precision('interest_amount')));
 	}
 });
