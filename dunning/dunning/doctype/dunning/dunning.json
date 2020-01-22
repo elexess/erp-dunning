@@ -38,6 +38,7 @@
    "fieldname": "sales_invoice",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Sales Invoice",
    "options": "Sales Invoice",
    "reqd": 1
@@ -136,6 +137,7 @@
    "fieldname": "dunning_type",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Dunning Type",
    "options": "Dunning Type"
   },
@@ -144,6 +146,7 @@
    "default": "Unresolved",
    "fieldname": "resolution_status",
    "fieldtype": "Select",
+   "in_standard_filter": 1,
    "label": "Resolution Status",
    "options": "Resolved\nUnresolved"
   },
@@ -209,7 +212,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2019-12-09 15:12:13.296047",
+ "modified": "2020-01-22 18:33:11.536883",
  "modified_by": "Administrator",
  "module": "Dunning",
  "name": "Dunning",
