@@ -186,7 +186,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "en",
+   "fetch_from": "sales_invoice.language",
    "fieldname": "language",
    "fieldtype": "Link",
    "label": "Print Language",
@@ -212,7 +212,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2020-01-22 18:33:11.536883",
+ "modified": "2021-03-02 20:15:44.486120",
  "modified_by": "Administrator",
  "module": "Dunning",
  "name": "Dunning",
