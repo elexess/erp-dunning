@@ -10,6 +10,6 @@ MIT
 
 ```
 cd ~/frappe/bench
-bench get-app dunning https://github.com/newmatik/dunning
+bench get-app dunning https://github.com/elexess/erp-dunning.git
 bench --site [mysite] install-app dunning
 ```
