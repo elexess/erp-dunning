@@ -15,6 +15,20 @@ frappe.ui.form.on('Dunning', {
 		});
 	},
 	refresh: function (frm) {
+    if(frm.doc.docstatus == 1){
+        frm.add_custom_button(__('Send Payment Reminder Email'), function () {
+            frappe.call({
+                method: "dunning.dunning.doctype.dunning.dunning.send_payment_reminder_email",
+                freeze: true,
+                freeze_message: __("Sending Payment Reminder Email..."),
+                args: {
+                    sales_invoice: frm.doc.sales_invoice,
+                    doc_name: frm.doc.name
+                },
+                callback: function (r) {}
+            })
+        })
+    }
 		frm.set_df_property("company", "read_only", frm.doc.__islocal ? 0 : 1);
 		frm.toggle_display("naming_series", false);
 		if (frm.is_new()) {
