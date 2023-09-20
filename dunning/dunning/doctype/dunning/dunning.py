@@ -5,6 +5,7 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
+from frappe import _
 import json
 from six import string_types
 
@@ -28,3 +29,32 @@ def get_text_block(dunning_type, language, doc):
 			'top_text_block': frappe.render_template(text_block.top_text_block, doc),
 			'bottom_text_block': frappe.render_template(text_block.bottom_text_block, doc)
 		}
+	
+
+@frappe.whitelist()
+def send_payment_reminder_email(sales_invoice, doc_name):
+	si = frappe.db.get_value("Sales Invoice", sales_invoice, ["customer", "contact_person"], as_dict=1)
+	lang = frappe.db.get_value("Customer", si.customer, "language")
+	if lang == 'de':
+		template = 'zahlungserinnerung'
+		subject = "Zahlungserinnerung "+ sales_invoice
+	else:
+		template = 'payment_reminder'
+		subject = 'Payment Reminder ' + sales_invoice
+
+	sales_invoice_attachment = frappe.attach_print("Sales Invoice", sales_invoice, file_name=sales_invoice, lang=lang)
+	dunning_attachment = frappe.attach_print("Dunning", doc_name, file_name=doc_name, lang=lang)
+	recipients = frappe.db.get_value("Contact", si.contact_person, "email_id")
+	if recipients:
+		frappe.sendmail(recipients=recipients,
+							subject=subject,
+							template=template,
+							args=dict(
+								sales_invoice=sales_invoice,
+								doc_name=doc_name
+							),
+							attachments=[sales_invoice_attachment, dunning_attachment]
+							)
+		frappe.msgprint(_("Payment Reminder Email Sent to {0}").format(recipients))
+	else:
+		frappe.throw(_("No Email ID found in {0} check customer sales invoice contact person").format(sales_invoice))
